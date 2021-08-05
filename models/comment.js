@@ -15,7 +15,7 @@ Comment.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
-    comment: {
+    comment_post: {
       type: DataTypes.STRING,
       allowNull: false,
     },
