@@ -1,0 +1,9 @@
+header {
+    padding: 60px;
+    background: lightskyblue;
+    color: black;
+    font-size: 30px;
+} 
+#pageName {
+    text-align: center;
+} 
