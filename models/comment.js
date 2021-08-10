@@ -1,7 +1,7 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
-class Post extends Model {}
+class Comment extends Model {}
 
 Comment.init(
   {
@@ -15,7 +15,7 @@ Comment.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
-    comment_post: {
+    comment_blog: {
       type: DataTypes.STRING,
       allowNull: false,
     },
@@ -26,10 +26,10 @@ Comment.init(
         key: 'id',
         }
       },
-    post_id: {
+    blog_id: {
       type: DataTypes.INTEGER,
       references: {
-        model: 'post',
+        model: 'blog',
         key: 'id',
       }  
     },
