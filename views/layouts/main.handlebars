@@ -11,18 +11,34 @@
 <body>
   <div class="flex-column justify-space-around">
     <header class="display-flex justify-space-between align-center p-2">
-      <h1 id= "pageName">
-        TECH BLOG
-      </h1>
+     
       <nav>
-        <!-- Conditionally render login or logout links -->
-        {{#if logged_in}}
-        <a href="/blog">blog</a> |
-        <button class="no-button" id="logout">logout</button>
-        {{else}}
-        <a href="/login">login</a>
-        {{/if}}
+      
+        <ul class="nav__links">
+
+          <li class="link__item"><a href="">Home</a></li>
+          <li class="link__item"><a href="">Dashboard</a></li>
+          
+          <!-- Conditionally render login or logout links -->
+          {{#if logged_in}}
+          <li class="link__item">
+            <a href="/blog">blog</a> |
+          </li>
+          <li class="link__item">
+            <button class="no-button" id="logout">logout</button>
+          </li>
+          {{else}}
+          <li class="link__item">
+            <a href="/login">login</a>
+      
+          </li>
+          {{/if}}
+        </ul>
       </nav>
+       
+       <h1 id= "pageName">
+        <a href="/">TECH BLOG</a>
+      </h1>
     </header>
     <main class="container container-fluid mt-5">
       <!-- Render the sub layout -->

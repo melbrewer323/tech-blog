@@ -5,5 +5,15 @@ header {
     font-size: 30px;
 } 
 #pageName {
-    text-align: center;
+    text-align: left;
 } 
+
+.link__item {
+    list-style: none;
+}
+
+.nav__links {
+    display: flex;
+    gap: 20px;
+    padding-left: 0px;
+}
