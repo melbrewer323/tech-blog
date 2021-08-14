@@ -8,7 +8,7 @@ router.get("/", async (req, res) => {
       include: [
         {
           model: User,
-          attributes: ["username", "id", "email"],
+          attributes: ["name", "id", "email"],
         },
         {
           model: Comment,
@@ -19,7 +19,7 @@ router.get("/", async (req, res) => {
     const blogs = blogData.map((blog) => blog.get({ plain: true }));
 
     res.render("home", {
-      blogs,
+      blog,
       logged_in: req.session.logged_in,
     });
   } catch (err) {
@@ -27,9 +27,9 @@ router.get("/", async (req, res) => {
   }
 });
 
-router.get("/project/:id", async (req, res) => {
+router.get("/blog/:id", async (req, res) => {
   try {
-    const projectData = await Project.findByPk(req.params.id, {
+    const blogData = await Blog.findByPk(req.params.id, {
       include: [
         {
           model: User,
@@ -38,10 +38,10 @@ router.get("/project/:id", async (req, res) => {
       ],
     });
 
-    const project = projectData.get({ plain: true });
+    const blog = blogData.get({ plain: true });
 
-    res.render("project", {
-      ...project,
+    res.render("blog", {
+      ...blog,
       logged_in: req.session.logged_in,
     });
   } catch (err) {
@@ -49,16 +49,16 @@ router.get("/project/:id", async (req, res) => {
   }
 });
 
-router.get("/profile", withAuth, async (req, res) => {
+router.get("/blog", withAuth, async (req, res) => {
   try {
     const userData = await User.findByPk(req.session.user_id, {
       attributes: { exclude: ["password"] },
-      include: [{ model: Project }],
+      include: [{ model: Blog }],
     });
 
     const user = userData.get({ plain: true });
 
-    res.render("profile", {
+    res.render("blog", {
       ...user,
       logged_in: true,
     });
@@ -69,7 +69,7 @@ router.get("/profile", withAuth, async (req, res) => {
 
 router.get("/login", (req, res) => {
   if (req.session.logged_in) {
-    res.redirect("/profile");
+    res.redirect("/blog");
     return;
   }
 
